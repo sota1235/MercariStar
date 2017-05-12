@@ -53,10 +53,16 @@ export default class MercariStar extends Component {
   }
 
   play = async () => {
-    console.log('test');
-
     try {
       const filePath = await AudioRecorder.startRecording();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  stop = async () => {
+    try {
+      const filePath = await AudioRecorder.stopRecording();
     } catch (error) {
       console.error(error);
     }
@@ -67,7 +73,7 @@ export default class MercariStar extends Component {
       <View style={styles.container}>
         <Button title="Play" onPress={this.play}>Play</Button>
         <Button title="Pause" onPress={() => {}}>Pause</Button>
-        <Button title="Stop" onPress={() => {}}>Stop</Button>
+        <Button title="Stop" onPress={this.stop}>Stop</Button>
       </View>
     );
   }
