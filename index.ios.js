@@ -10,7 +10,9 @@ import {
   StyleSheet,
   Text,
   Button,
-  View
+  View,
+  Platform,
+  PermissionsAndroid,
 } from 'react-native';
 import { AudioRecorder, AudioUtils } from 'react-native-audio';
 
@@ -38,10 +40,18 @@ export default class MercariStar extends Component {
   }
 
   componentDidMount() {
-    startRecord(audioPath);
+    this.checkPermission().then((hasPermission) => {
+      if (!hasPermission) {
+        // TODO: Show the user that the recording will not work.
+        console.log('[Android] Microphone permission denined');
+        return;
+      }
 
-    AudioRecorder.onProgress = this.onProgress;
-    AudioRecorder.onFinished = this.onFinished;
+      startRecord(audioPath);
+
+      AudioRecorder.onProgress = this.onProgress;
+      AudioRecorder.onFinished = this.onFinished;
+    });
   }
 
   onProgress = (data) => {
@@ -50,6 +60,25 @@ export default class MercariStar extends Component {
 
   onFinished = (data) => {
     console.log('onFinished', data);
+  }
+
+  isAndroid = () => Platform.OS === 'android';
+
+  checkPermission = () => {
+    if (!this.isAndroid()) {
+      return Promise.resolve(true);
+    }
+
+    const rationale = {
+      'title': 'Microphone Permission',
+      'message': 'AudioExample needs access to your microphone so you can record audio.'
+    };
+
+    return PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.RECORD_AUDIO, rationale)
+      .then((result) => {
+        console.log('Permission result:', result);
+        return (result === true || result === PermissionsAndroid.RESULTS.GRANTED);
+      });
   }
 
   play = async () => {
