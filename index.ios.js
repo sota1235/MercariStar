@@ -13,24 +13,53 @@ import {
   View
 } from 'react-native';
 import { AudioRecorder, AudioUtils } from 'react-native-audio';
+
 let audioPath = AudioUtils.DocumentDirectoryPath + '/test.aac';
 
-AudioRecorder.prepareRecordingAtPath(audioPath, {
+const startRecord = audioPath => {
+  AudioRecorder.prepareRecordingAtPath(audioPath, {
     SampleRate: 22050,
     Channels: 1,
     AudioQuality: "Low",
     AudioEncoding: "aac"
-});
+  });
+};
 
 export default class MercariStar extends Component {
+
   state = {
     currentTime: 0.0,
     recording: false,
     hasPermission: false,
   };
 
-  play = () => {
+  componentWillMount() {
+    console.log(`path: ${audioPath}`);
+  }
+
+  componentDidMount() {
+    startRecord(audioPath);
+
+    AudioRecorder.onProgress = this.onProgress;
+    AudioRecorder.onFinished = this.onFinished;
+  }
+
+  onProgress = (data) => {
+    console.log('onProgress', data);
+  }
+
+  onFinished = (data) => {
+    console.log('onFinished', data);
+  }
+
+  play = async () => {
     console.log('test');
+
+    try {
+      const filePath = await AudioRecorder.startRecording();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   render() {
