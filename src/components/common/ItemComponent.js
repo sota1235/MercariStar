@@ -3,13 +3,21 @@
  */
 import React, { PropTypes } from 'react';
 import { View, Text, Image } from 'react-native';
+import Dimensions from 'Dimensions';
+
+const styles = {
+  image: {
+    width: Dimensions.get('window').width / 3,
+    height: Dimensions.get('window').width / 3,
+  },
+};
 
 const ItemComponent = ({ item }) => (
   <View>
     <Text>ID: {item.id}</Text>
     <Text>Price: {item.price}</Text>
     <Image
-      style={{width: 50, height: 50}}
+      style={styles.image}
       source={{url: item.image}}
     />
   </View>
