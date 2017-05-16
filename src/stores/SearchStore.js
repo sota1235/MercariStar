@@ -5,7 +5,7 @@ export default class SearchStore {
   @observable query = '';
   @observable products = [];
 
-  @action async fetch(keyword){
+  @action async fetch(keyword) {
     try {
       let response = await search(keyword);
       let responseJson = await response.json();
