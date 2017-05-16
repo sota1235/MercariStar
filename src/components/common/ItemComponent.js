@@ -8,7 +8,10 @@ const ItemComponent = ({ item }) => (
   <View>
     <Text>ID: {item.id}</Text>
     <Text>Price: {item.price}</Text>
-    <Image source={{url: item.image}} />
+    <Image
+      style={{width: 50, height: 50}}
+      source={{url: item.image}}
+    />
   </View>
 );
 
