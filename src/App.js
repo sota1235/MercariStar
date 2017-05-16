@@ -1,22 +1,21 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
-import { Provider } from 'mobx-react';
+import React from 'react';
+import { addNavigationHelpers } from 'react-navigation';
+import { observer, Provider } from 'mobx-react';
 import stores from './stores';
-import SearchScene from './components/scene/SearchScene';
-import { search } from './services/search';
+import AppNavigator from './AppNavigator';
 
-class App extends Component {
-  render(){
+@observer class App extends React.Component {
+  render() {
     return (
       <Provider {...stores}>
-        <SearchScene />
+        <AppNavigator
+          navigation={addNavigationHelpers({
+          dispatch: stores.navigationStore.dispatch,
+          state: stores.navigationStore.navigationState,
+        })}
+        />
       </Provider>
-    )
+    );
   }
 }
 

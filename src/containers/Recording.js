@@ -27,7 +27,7 @@ const startRecord = audioPath => {
   });
 };
 
-class RecordingScene extends Component {
+class Recording extends Component {
 
   state = {
     currentTime: 0.0,
@@ -127,4 +127,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RecordingScene;
+export default Recording;
