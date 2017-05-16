@@ -10,6 +10,9 @@ import SearchPage from '../components/pages/SearchPage';
 @inject('searchStore')
 @observer
 class Search extends Component {
+  componentWillMount() {
+    this.fetch();
+  }
   fetch = () => {
     this.props.searchStore.fetch('bose');
   };
@@ -18,7 +21,7 @@ class Search extends Component {
     console.log(this.props.searchStore.products);
     return (
       <View style={styles.container}>
-        <Text>{this.props.searchStore.products.length}</Text>
+        <Text>Total count: {this.props.searchStore.products.length}</Text>
         <SearchPage items={this.props.searchStore.products} />
         <Button title="Ferch" onPress={this.fetch}>Fetch</Button>
 
