@@ -10,16 +10,36 @@ const styles = {
     width: Dimensions.get('window').width / 3,
     height: Dimensions.get('window').width / 3,
   },
+  priceBox: {
+    paddingLeft: 5,
+    paddingRight: 5,
+    position: 'absolute',
+    height: 15,
+    bottom: 10,
+    left: 10,
+    overflow: 'hidden',
+    backgroundColor:'gray',
+    borderRadius: 7,
+    borderWidth: 1,
+    borderColor: 'gray',
+    opacity: 0.9,
+  },
+  price: {
+    color: 'white',
+    fontSize: 10,
+    textAlign: 'center',
+  }
 };
 
 const ItemComponent = ({ item }) => (
   <View>
-    <Text>ID: {item.id}</Text>
-    <Text>Price: {item.price}</Text>
     <Image
       style={styles.image}
       source={{url: item.image}}
     />
+    <View style={styles.priceBox}>
+      <Text style={styles.price}>${item.price}</Text>
+    </View>
   </View>
 );
 
