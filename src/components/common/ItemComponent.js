@@ -3,6 +3,7 @@
  */
 import React, { PropTypes } from 'react';
 import { View, Text, Image } from 'react-native';
+import { PropTypes as MobxPropTypes } from 'mobx-react';
 import Dimensions from 'Dimensions';
 
 const styles = {
