@@ -7,12 +7,12 @@ import { FlatList, View, Text } from 'react-native';
 import ItemComponent from '../common/ItemComponent';
 
 
-const SearchPage = ({ items }) => (
+const SearchPage = ({ handleOnItemImagePress, items }) => (
   <View>
     <FlatList
       data={items}
       renderItem={
-        ({ item }) => <ItemComponent handleOnPress={() => console.log('click')} item={item} />
+        ({ item }) => <ItemComponent handleOnPress={handleOnItemImagePress} item={item} />
       }
       numColumns={3}
     />
@@ -20,6 +20,7 @@ const SearchPage = ({ items }) => (
 );
 
 SearchPage.propTypes = {
+  handleOnItemImagePress: PropTypes.func.isRequired,
   items: MobxPropTypes.observableArrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

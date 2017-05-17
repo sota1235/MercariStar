@@ -13,14 +13,23 @@ class Search extends Component {
   componentWillMount() {
     this.fetch();
   }
+
   fetch = () => {
     this.props.searchStore.fetch('bose');
   };
+
+  handleImagePress = (event) => {
+    console.log('pressed');
+  }
+
   render() {
     const { navigate, setParams, state } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <SearchPage items={this.props.searchStore.products} />
+        <SearchPage
+          handleOnItemImagePress={this.handleImagePress}
+          items={this.props.searchStore.products}
+        />
       </View>
     );
   }
