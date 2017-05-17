@@ -6,6 +6,7 @@ import { View, Text } from 'react-native';
 
 const styles = {
   title: {
+    margin: 7,
     color: 'gray',
     fontSize: 15,
     textAlign: 'center',
