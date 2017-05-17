@@ -12,7 +12,6 @@ import ItemDetailPage from '../components/pages/ItemDetailPage';
 class ItemDetail extends Component {
   render() {
     const item = this.props.itemStore.item;
-    console.log(item);
     return (
       <View style={styles.container}>
         <ItemDetailPage />
