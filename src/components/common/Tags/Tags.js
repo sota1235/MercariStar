@@ -4,7 +4,9 @@ import {
   View,
   FlatList,
 } from 'react-native';
+import { PropTypes as MobxPropTypes } from "mobx-react";
 import TagsItem from './TagsItem';
+
 
 const tagsStyles = StyleSheet.create({
   container: {
@@ -33,7 +35,7 @@ const Tags = props => (
 );
 
 Tags.propTypes = {
-  data: PropTypes.array,
+  data: MobxPropTypes.observableArray,
   onPress: PropTypes.func,
 };
 

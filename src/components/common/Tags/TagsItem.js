@@ -23,7 +23,7 @@ const TagsItem = props => (
   <View style={tagsItemStyles.container}>
     <TouchableOpacity onPress={props.onPress}>
       <Text style={tagsItemStyles.detail}>
-        {props.value}
+        {props.name}
       </Text>
     </TouchableOpacity>
   </View>
