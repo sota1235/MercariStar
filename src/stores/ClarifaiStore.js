@@ -1,7 +1,9 @@
 import { observable, computed, action } from 'mobx';
 import Clarifai from 'clarifai';
-import { CLARIFAI_ID, CLARIFAI_SECRET } from // YANDEX_TRANSLATE_KEY,
-'./../../env';
+import {
+  CLARIFAI_ID,
+  CLARIFAI_SECRET, // YANDEX_TRANSLATE_KEY,
+} from './../../env';
 const ClarifaiApp = new Clarifai.App(CLARIFAI_ID, CLARIFAI_SECRET);
 
 const filterOutNoConcepts = concepts =>
@@ -15,7 +17,7 @@ export default class ClarifaiStore {
   @observable concepts = [];
 
   @computed get isLoading() {
-    console.log('this.loading', this.loading);
+    // console.log('this.loading', this.loading);
     return this.loading;
   }
 
@@ -24,23 +26,23 @@ export default class ClarifaiStore {
   }
 
   @action async post(imageData) {
-    try{
-      let response = await ClarifaiApp.models
-        .predict(
-          { id: Clarifai.GENERAL_MODEL, language: 'ja' },
-          { base64: imageData },
-        );
+    try {
+      this.loading = true;
 
-        const concepts = response.data.outputs[0].data.concepts
-          .slice(0, 10)
-          .map(concept => ({
-            name: concept.name,
-            value: concept.value,
-          }));
+      let response = await ClarifaiApp.models.predict(
+        { id: Clarifai.GENERAL_MODEL, language: 'ja' },
+        { base64: imageData },
+      );
 
-        this.loading = false;
-        this.concepts = filterOutNoConcepts(concepts);
+      const concepts = response.data.outputs[0].data.concepts
+        .slice(0, 10)
+        .map(concept => ({
+          name: concept.name,
+          value: concept.value,
+        }));
 
+      this.loading = false;
+      this.concepts = filterOutNoConcepts(concepts);
     } catch (error) {
       console.log(error);
     }

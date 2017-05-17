@@ -1,10 +1,5 @@
 import React, { PropTypes } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const tagsItemStyles = StyleSheet.create({
   container: {
@@ -21,7 +16,7 @@ const tagsItemStyles = StyleSheet.create({
 });
 const TagsItem = props => (
   <View style={tagsItemStyles.container}>
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity onPress={() => props.onPress(props.name)}>
       <Text style={tagsItemStyles.detail}>
         {props.name}
       </Text>
@@ -30,7 +25,7 @@ const TagsItem = props => (
 );
 
 TagsItem.propTypes = {
-  value: PropTypes.string,
+  name: PropTypes.string,
   onPress: PropTypes.func,
 };
 
