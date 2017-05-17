@@ -19,7 +19,9 @@ class Search extends Component {
   };
 
   handleImagePress = (event) => {
+    const { navigate } = this.props.navigation;
     console.log('pressed');
+    navigate('ItemDetail');
   }
 
   render() {
