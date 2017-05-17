@@ -7,6 +7,12 @@ import { PropTypes as MobxPropTypes } from 'mobx-react';
 import Dimensions from 'Dimensions';
 
 const styles = {
+  container: {
+    margin: 2,
+    overflow: 'hidden',
+    borderWidth: 0,
+    borderRadius: 7,
+  },
   image: {
     width: Dimensions.get('window').width / 3,
     height: Dimensions.get('window').width / 3,
@@ -33,7 +39,7 @@ const styles = {
 };
 
 const ItemComponent = ({ handleOnPress, item }) => (
-  <TouchableOpacity onPress={(event) => { handleOnPress(event, item) }}>
+  <TouchableOpacity style={styles.container} onPress={(event) => { handleOnPress(event, item) }}>
     <Image
       style={styles.image}
       source={{url: item.image}}
