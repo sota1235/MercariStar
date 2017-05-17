@@ -24,7 +24,7 @@ class Search extends Component {
     this.props.itemStore.set(name, image, price );
 
     const { navigate } = this.props.navigation;
-    navigate('ItemDetail');
+    navigate('ItemDetail', { title: name });
   }
 
   render() {

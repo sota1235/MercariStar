@@ -12,8 +12,8 @@ import BuyButtonComponent from '../common/BuyButtonComponent';
 
 const ItemDetailPage = ({ item, handlePressBuyButton }) => (
   <View>
-    <ItemTitleComponent title={item.title} />
     <ItemImageComponent url={item.imageUrl} />
+    <ItemTitleComponent title={item.title} />
     <ItemPriceComponent price={item.price} />
     <BuyButtonComponent handleOnPress={handlePressBuyButton} />
   </View>

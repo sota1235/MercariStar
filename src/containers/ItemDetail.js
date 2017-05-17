@@ -10,6 +10,10 @@ import ItemDetailPage from '../components/pages/ItemDetailPage';
 @inject('itemStore')
 @observer
 class ItemDetail extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.title,
+  });
+
   buyAction = () => {
     alert('You need more money :(');
   };
