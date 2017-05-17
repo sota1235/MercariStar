@@ -2,7 +2,7 @@
  * @flow
  */
 import React, { PropTypes } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { PropTypes as MobxPropTypes } from 'mobx-react';
 import Dimensions from 'Dimensions';
 
@@ -32,8 +32,8 @@ const styles = {
   }
 };
 
-const ItemComponent = ({ item }) => (
-  <View>
+const ItemComponent = ({ handleOnPress, item }) => (
+  <TouchableOpacity onPress={handleOnPress}>
     <Image
       style={styles.image}
       source={{url: item.image}}
@@ -41,10 +41,11 @@ const ItemComponent = ({ item }) => (
     <View style={styles.priceBox}>
       <Text style={styles.price}>${item.price}</Text>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 ItemComponent.propTypes = {
+  handleOnPress: PropTypes.func,
   item: PropTypes.shape({
     id: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

@@ -12,7 +12,7 @@ const SearchPage = ({ items }) => (
     <FlatList
       data={items}
       renderItem={
-        ({ item }) => <ItemComponent item={item} />
+        ({ item }) => <ItemComponent handleOnPress={() => console.log('click')} item={item} />
       }
       numColumns={3}
     />
