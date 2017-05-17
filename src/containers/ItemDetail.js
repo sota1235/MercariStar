@@ -10,11 +10,9 @@ import ItemDetailPage from '../components/pages/ItemDetailPage';
 @inject('itemStore')
 @observer
 class ItemDetail extends Component {
-  fetch = () => {
-    // this.props.itemStore.fetch('item');
-  };
-
   render() {
+    const item = this.props.itemStore.item;
+    console.log(item);
     return (
       <View style={styles.container}>
         <ItemDetailPage />

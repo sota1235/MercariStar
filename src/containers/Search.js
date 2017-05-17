@@ -8,6 +8,7 @@ import { NavigationActions } from 'react-navigation';
 import SearchPage from '../components/pages/SearchPage';
 
 @inject('searchStore')
+@inject('itemStore')
 @observer
 class Search extends Component {
   componentWillMount() {
@@ -18,9 +19,10 @@ class Search extends Component {
     this.props.searchStore.fetch('bose');
   };
 
-  handleImagePress = (event) => {
+  handleImagePress = (event, item) => {
+    this.props.itemStore.set(item);
+
     const { navigate } = this.props.navigation;
-    console.log('pressed');
     navigate('ItemDetail');
   }
 

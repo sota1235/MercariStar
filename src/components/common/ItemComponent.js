@@ -33,7 +33,7 @@ const styles = {
 };
 
 const ItemComponent = ({ handleOnPress, item }) => (
-  <TouchableOpacity onPress={handleOnPress}>
+  <TouchableOpacity onPress={(event) => { handleOnPress(event, item) }}>
     <Image
       style={styles.image}
       source={{url: item.image}}
