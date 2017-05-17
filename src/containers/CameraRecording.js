@@ -71,6 +71,8 @@ class CameraRecording extends Component {
   };
 
   render() {
+    const { navigate, setParams, state } = this.props.navigation;
+
     return (
       <View style={styles.container}>
         <Camera
@@ -83,7 +85,7 @@ class CameraRecording extends Component {
         >
           <Tags
             data={this.props.clarifaiStore.concepts}
-            onPress={(name) => console.log(name)}
+            onPress={(name) => navigate('Search', { title: name, keyword: name })}
           />
         </Camera>
         {this.props.clarifaiStore.isLoading === true &&

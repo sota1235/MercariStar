@@ -5,7 +5,7 @@ export default class NavigationStore {
   @observable.ref
   navigationState = {
     index: 0,
-    routes: [{ key: 'Search', routeName: 'Search' }],
+    routes: [{ key: 'CameraRecording', routeName: 'CameraRecording' }],
   };
 
   @action dispatch = (action, stackNavState = true) => {

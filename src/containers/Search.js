@@ -11,12 +11,17 @@ import SearchPage from '../components/pages/SearchPage';
 @inject('itemStore')
 @observer
 class Search extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.title,
+  });
+
   componentWillMount() {
     this.fetch();
   }
 
   fetch = () => {
-    this.props.searchStore.fetch('bose');
+    const {searchStore, navigation } = this.props;
+    searchStore.fetch(navigation.state.params.keyword);
   };
 
   handleImagePress = (event, item) => {
