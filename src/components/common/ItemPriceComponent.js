@@ -20,7 +20,7 @@ const ItemPriceComponent = ({ price }) => (
 );
 
 ItemPriceComponent.propTypes = {
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default ItemPriceComponent;
