@@ -3,12 +3,13 @@
  */
 import React, { PropTypes } from 'react';
 import { FlatList, View, Text } from 'react-native';
+import ItemComponent from '../common/ItemComponent';
 
 const SearchPage = ({ items }) => (
   <View>
     <FlatList
       data={items}
-      renderItem={({ item }) => <Text>{item.id}</Text>}
+      renderItem={({ item }) => <ItemComponent item={item} />}
     />
   </View>
 );
