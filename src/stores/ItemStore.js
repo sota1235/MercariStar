@@ -1,9 +1,15 @@
 import { observable, action } from 'mobx';
 
 export default class ItemStore {
-  @observable item = {};
+  @observable item = {
+    title: '',
+    imageUrl: '',
+    price: '',
+  };
 
-  @action set(item) {
-    this.item = {};
+  @action set(title, imageUrl, price) {
+    this.item = {
+      title, imageUrl, price,
+    };
   }
 }

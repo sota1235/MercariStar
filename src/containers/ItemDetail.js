@@ -14,7 +14,7 @@ class ItemDetail extends Component {
     const item = this.props.itemStore.item;
     return (
       <View style={styles.container}>
-        <ItemDetailPage />
+        <ItemDetailPage item={item} />
       </View>
     );
   }

@@ -20,7 +20,8 @@ class Search extends Component {
   };
 
   handleImagePress = (event, item) => {
-    this.props.itemStore.set(item);
+    const { name, image, price } = item;
+    this.props.itemStore.set(name, image, price );
 
     const { navigate } = this.props.navigation;
     navigate('ItemDetail');
