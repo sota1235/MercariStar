@@ -15,7 +15,7 @@ class ItemDetail extends Component {
   });
 
   buyAction = () => {
-    alert('You need more money :(');
+    alert('お金が足りません :(');
   };
 
   render() {

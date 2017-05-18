@@ -45,7 +45,7 @@ const ItemComponent = ({ handleOnPress, item }) => (
       source={{url: item.image}}
     />
     <View style={styles.priceBox}>
-      <Text style={styles.price}>${item.price}</Text>
+      <Text style={styles.price}>¥{item.price}</Text>
     </View>
   </TouchableOpacity>
 );
