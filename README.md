@@ -9,6 +9,10 @@ Sample React Native Application.
 
 You can search items from the image.
 
+
+![Search by Image](https://github.com/sota1235/MercariStar/blob/master/2017-05-19%2017_34_28.gif "Demo")
+
+
 - [clarifai](https://www.clarifai.com/)
 
 ### Requirement
